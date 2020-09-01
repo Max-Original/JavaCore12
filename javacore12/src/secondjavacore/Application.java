@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-public class Aplication {
+public class Application {
 
 
 	enum Seasons {
@@ -15,7 +15,7 @@ public class Aplication {
 	}
 
 //inserted month information in to enum months
-	enum months {
+	enum Months {
 
 		JANUARY(31, Seasons.WINTER), FEBRUARY(29, Seasons.WINTER), MARCH(31, Seasons.SPRING),
 
@@ -28,14 +28,11 @@ public class Aplication {
 		Integer days;
 		Seasons season;
 
-//months constructor
-
-		months(Integer days, Seasons season) {
+		Months(Integer days, Seasons season) {
 			this.days = days;
 			this.season = season;
 		}
 
-// getters for variable days, s	
 		public Integer getDays() {
 			return days;
 		}
@@ -62,20 +59,20 @@ public class Aplication {
 
 	public static void main(String[] args) throws secondjavacore.WrongInputConsoleParametersException {
 
-		List<months> month = new ArrayList<>();
+		List<Months> month = new ArrayList<>();
 
-		month.add(months.JANUARY);
-		month.add(months.FEBRUARY);
-		month.add(months.MARCH);
-		month.add(months.APRIL);
-		month.add(months.MAY);
-		month.add(months.JUNE);
-		month.add(months.JULY);
-		month.add(months.AUGUST);
-		month.add(months.SEPTEMBER);
-		month.add(months.OCTOBER);
-		month.add(months.NOVEMBER);
-		month.add(months.DECEMBER);
+		month.add(Months.JANUARY);
+		month.add(Months.FEBRUARY);
+		month.add(Months.MARCH);
+		month.add(Months.APRIL);
+		month.add(Months.MAY);
+		month.add(Months.JUNE);
+		month.add(Months.JULY);
+		month.add(Months.AUGUST);
+		month.add(Months.SEPTEMBER);
+		month.add(Months.OCTOBER);
+		month.add(Months.NOVEMBER);
+		month.add(Months.DECEMBER);
 
 		List<Seasons> season = new ArrayList<>();
 
@@ -84,19 +81,19 @@ public class Aplication {
 		season.add(Seasons.SUMMER);
 		season.add(Seasons.AUTUMN);
 
-		List<months> amountMonths = Arrays.asList(months.values());
+		List<Months> amountMonths = Arrays.asList(Months.values());
 		List<Seasons> amountSeasons = Arrays.asList(Seasons.values());
 
-		Scanner sc = new Scanner(System.in);
+		Scanner scanner = new Scanner(System.in);
 
 		while (true) {
 			menu();
-			switch (sc.next()) {
+			switch (scanner.next()) {
 			case "1": {
 
 				System.out.println("Enter month");
-				sc = new Scanner(System.in);
-				String months = sc.next().toUpperCase();
+				scanner = new Scanner(System.in);
+				String months = scanner.next().toUpperCase();
 
 				boolean flag = checkForMonth(amountMonths, months);
 				if (!flag) {
@@ -107,8 +104,8 @@ public class Aplication {
 			case "2": {
 
 				System.out.println("Enter Season");
-				sc = new Scanner(System.in);
-				String Season = sc.next().toUpperCase();
+				scanner = new Scanner(System.in);
+				String Season = scanner.next().toUpperCase();
 
 				boolean flag = sameSeason(amountMonths, Season);
 
@@ -120,8 +117,8 @@ public class Aplication {
 
 			case "3": {
 				System.out.println("Enter number of Days");
-				sc = new Scanner(System.in);
-				int num = sc.nextInt();
+				scanner = new Scanner(System.in);
+				int num = scanner.nextInt();
 
 				boolean flag = compareAmountOfdays(amountMonths, num);
 
@@ -134,8 +131,8 @@ public class Aplication {
 
 			case "4": {
 				System.out.println("Enter number of Days");
-				sc = new Scanner(System.in);
-				int num = sc.nextInt();
+				scanner = new Scanner(System.in);
+				int num = scanner.nextInt();
 
 				if (num > 33) {
 					throw new WrongInputConsoleParametersException("month with " + num + " days doesnt exist");
@@ -151,8 +148,8 @@ public class Aplication {
 
 			case "5": {
 				System.out.println("Enter number of Days");
-				sc = new Scanner(System.in);
-				int num = sc.nextInt();
+				scanner = new Scanner(System.in);
+				int num = scanner.nextInt();
 
 				if (num < 28) {
 					throw new WrongInputConsoleParametersException("month with " + num + " days doesnt exist");
@@ -167,8 +164,8 @@ public class Aplication {
 			case "6": {
 
 				System.out.println("Enter Season");
-				sc = new Scanner(System.in);
-				String enteredWord = sc.next().toUpperCase();
+				scanner = new Scanner(System.in);
+				String enteredWord = scanner.next().toUpperCase();
 
 				boolean flag = false;
 
@@ -180,8 +177,8 @@ public class Aplication {
 				}
 
 				if (flag) {
-					Seasons se2 = Seasons.valueOf(enteredWord);
-					int ordinal = se2.ordinal();
+					Seasons seasonObject = Seasons.valueOf(enteredWord);
+					int ordinal = seasonObject.ordinal();
 					System.out.println(ordinal);
 					Object[] asa = amountSeasons.toArray();
 					if (ordinal == asa.length - 1) {
@@ -201,8 +198,8 @@ public class Aplication {
 			case "7": {
 
 				System.out.println("Enter Season");
-				sc = new Scanner(System.in);
-				String seasons = sc.next().toUpperCase();
+				scanner = new Scanner(System.in);
+				String seasons = scanner.next().toUpperCase();
 
 				boolean flag = false;
 
@@ -236,7 +233,7 @@ public class Aplication {
 
 			case "8": {
 
-				for (months m : amountMonths) {
+				for (Months m : amountMonths) {
 					if (m.getDays() % 2 == 0) {
 						System.out.println(m);
 					}
@@ -245,7 +242,7 @@ public class Aplication {
 			}
 			case "9": {
 
-				for (months m : amountMonths) {
+				for (Months m : amountMonths) {
 					if (m.getDays() % 2 == 1) {
 						System.out.println(m);
 					}
@@ -255,12 +252,12 @@ public class Aplication {
 			case "10": {
 
 				System.out.println("Enter month");
-				sc = new Scanner(System.in);
-				String word = sc.next().toUpperCase();
+				scanner = new Scanner(System.in);
+				String word = scanner.next().toUpperCase();
 
 				boolean flag = false;
 
-				for (months m : amountMonths) {
+				for (Months m : amountMonths) {
 					if (m.name().equals(word)) {
 						System.out.println("Ì³ñÿöü ³ñíóº");
 						flag = true;
@@ -268,7 +265,7 @@ public class Aplication {
 				}
 				if (flag) {
 
-					months mo = months.valueOf(word);
+					Months mo = Months.valueOf(word);
 
 					if (mo.getDays() % 2 == 0) {
 						System.out.println("Ì³ñÿöü " + mo + " ìàº ïàðíó ê³ëüê³ñòü äí³â");
@@ -284,10 +281,10 @@ public class Aplication {
 		}
 	}
 
-	private static boolean moreDays(List<months> amountMonths, int num) {
+	private static boolean moreDays(List<Months> amountMonths, int num) {
 		boolean flag = false;
 
-		for (months m : amountMonths) {
+		for (Months m : amountMonths) {
 			if (m.getDays() > num) {
 				flag = true;
 				System.out.println(m);
@@ -296,10 +293,10 @@ public class Aplication {
 		return flag;
 	}
 
-	private static boolean lessDays(List<months> amountMonths, int num) {
+	private static boolean lessDays(List<Months> amountMonths, int num) {
 		boolean flag = false;
 		
-		for (months m : amountMonths) {
+		for (Months m : amountMonths) {
 			if (m.getDays() < num) {
 				flag = true;
 				System.out.println(m);
@@ -308,10 +305,10 @@ public class Aplication {
 		return flag;
 	}
 
-	private static boolean compareAmountOfdays(List<months> amountMonths, int num) {
+	private static boolean compareAmountOfdays(List<Months> amountMonths, int num) {
 		boolean flag = false;
 
-		for (months m : amountMonths) {
+		for (Months m : amountMonths) {
 			if (m.getDays() == num) {
 				flag = true;
 				System.out.println(m);
@@ -320,10 +317,10 @@ public class Aplication {
 		return flag;
 	}
 
-	private static boolean sameSeason(List<months> amountMonths, String Season) {
+	private static boolean sameSeason(List<Months> amountMonths, String Season) {
 		boolean flag = false;
 
-		for (months m : amountMonths) {
+		for (Months m : amountMonths) {
 			if (m.getS().name().equals(Season)) {
 				flag = true;
 			}
@@ -331,7 +328,7 @@ public class Aplication {
 		if (flag) {
 			Seasons seasons = Seasons.valueOf(Season);
 
-			for (months se : amountMonths) {
+			for (Months se : amountMonths) {
 				if (se.getS().name().equals(Season)) {
 					System.out.println(se);
 				}
@@ -340,10 +337,10 @@ public class Aplication {
 		return flag;
 	}
  
-	private static boolean checkForMonth(List<months> amountMonths, String months) {
+	private static boolean checkForMonth(List<Months> amountMonths, String months) {
 		boolean flag = false;
 
-		for (months m : amountMonths) {
+		for (Months m : amountMonths) {
 			if (m.name().equals(months)) {
 				System.out.println("Month exists");
 				flag = true;
